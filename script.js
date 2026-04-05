@@ -58,6 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
+            const mobile = document.getElementById('mobile').value;
             const serviceSelect = document.getElementById('service');
             const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
             const date = document.getElementById('date').value;
@@ -66,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 id: Date.now(),
                 name: name,
                 email: email,
+                mobile: mobile,
                 service: serviceText,
                 date: date,
                 status: 'Pending'
