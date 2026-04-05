@@ -70,21 +70,8 @@
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Jane Doe</td>
-                        <td>jane@example.com</td>
-                        <td>Hair Styling</td>
-                        <td>2026-04-10</td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>Emily Smith</td>
-                        <td>emily.s@example.com</td>
-                        <td>Spa & Facial</td>
-                        <td>2026-04-12</td>
-                        <td>Confirmed</td>
-                    </tr>
+                <tbody id="bookingsTableBody">
+                    <!-- Data will be populated via JS -->
                 </tbody>
             </table>
         </div>
@@ -97,5 +84,28 @@
             <p>&copy; 2026 Beauty zone. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tableBody = document.getElementById('bookingsTableBody');
+            const bookings = JSON.parse(localStorage.getItem('parlorBookings')) || [];
+
+            if (bookings.length === 0) {
+                tableBody.innerHTML = '<tr><td colspan="5" style="text-align: center;">No bookings yet!</td></tr>';
+                return;
+            }
+
+            bookings.forEach(booking => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${booking.name}</td>
+                    <td>${booking.email}</td>
+                    <td>${booking.service}</td>
+                    <td>${booking.date}</td>
+                    <td><span style="color: #d4af37;">${booking.status}</span></td>
+                `;
+                tableBody.appendChild(tr);
+            });
+        });
+    </script>
 </body>
 </html>

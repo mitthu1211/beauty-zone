@@ -50,5 +50,37 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    // Booking Form Submission
+    const bookingForm = document.getElementById('bookingForm');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const serviceSelect = document.getElementById('service');
+            const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const date = document.getElementById('date').value;
+            
+            const newBooking = {
+                id: Date.now(),
+                name: name,
+                email: email,
+                service: serviceText,
+                date: date,
+                status: 'Pending'
+            };
+            
+            // Get existing bookings
+            const existingBookings = JSON.parse(localStorage.getItem('parlorBookings')) || [];
+            existingBookings.push(newBooking);
+            
+            // Save back to local storage
+            localStorage.setItem('parlorBookings', JSON.stringify(existingBookings));
+            
+            alert('Booking requested successfully! We will contact you soon.');
+            bookingForm.reset();
+        });
+    }
 
 });
