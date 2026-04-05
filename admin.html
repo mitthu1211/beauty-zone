@@ -99,6 +99,13 @@
                 }
             }
             renderTable();
+
+            // Listen for cross-tab local storage changes to update table in real-time
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'parlorBookings') {
+                    renderTable();
+                }
+            });
         });
 
         function renderTable() {

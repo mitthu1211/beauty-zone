@@ -188,6 +188,15 @@
                 <button type="submit" class="btn-primary btn-full">Submit Request</button>
             </form>
         </div>
+        
+        <div class="status-checker" style="max-width: 500px; margin: 40px auto 0; padding: 20px; background: white; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); text-align: center;">
+            <h3 style="margin-bottom: 20px;">Check Your Appointment Status</h3>
+            <div style="display: flex; gap: 10px;">
+                <input type="tel" id="checkMobile" placeholder="Enter Mobile Number" style="flex:1; padding:10px; border:1px solid #ddd; border-radius:4px;" required>
+                <button onclick="checkBookingStatus()" style="padding:10px 20px; background:var(--accent-color); color:white; border:none; border-radius:4px; cursor:pointer;">Check</button>
+            </div>
+            <div id="statusResult" style="margin-top: 15px; font-weight: bold; color: var(--text-primary);"></div>
+        </div>
     </section>
 
     <!-- Footer -->

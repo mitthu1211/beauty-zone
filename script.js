@@ -86,3 +86,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+// Function to check booking status
+function checkBookingStatus() {
+    const mobile = document.getElementById('checkMobile').value;
+    const resultDiv = document.getElementById('statusResult');
+    
+    if (!mobile) {
+        resultDiv.innerHTML = '<span style="color:red;">Please enter your mobile number.</span>';
+        return;
+    }
+
+    const bookings = JSON.parse(localStorage.getItem('parlorBookings')) || [];
+    const userBookings = bookings.filter(b => b.mobile === mobile);
+    
+    if (userBookings.length > 0) {
+        // Show status of the most recent booking
+        const latestBooking = userBookings[userBookings.length - 1];
+        const statusColor = latestBooking.status === 'Confirmed' ? 'green' : '#d4af37';
+        resultDiv.innerHTML = `Your booking for <b>${latestBooking.service}</b> on <b>${latestBooking.date}</b> is <span style="color:${statusColor};">${latestBooking.status}</span>.`;
+    } else {
+        resultDiv.innerHTML = '<span style="color:red;">No booking found with this mobile number.</span>';
+    }
+}
