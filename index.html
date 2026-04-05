@@ -20,6 +20,7 @@
                 <li><a href="#home">Home</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#gallery">Gallery</a></li>
+                <li id="navLoginItem"><a href="#" onclick="openLoginModal(event)">Login</a></li>
             </ul>
         </nav>
         <a href="#booking" class="btn-primary">Book Now</a>
@@ -206,6 +207,27 @@
             <p>&copy; 2026 Beauty zone. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeLoginModal()">&times;</span>
+            <h2 id="modalTitle">Login / Register</h2>
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">Enter your mobile number to get a One-Time Password.</p>
+            
+            <div id="mobileStep">
+                <input type="tel" id="loginMobile" placeholder="e.g. 8356018941" pattern="[0-9]{10}" class="modal-input">
+                <button class="btn-primary btn-full" onclick="sendOtp()" style="margin-top: 15px;">Send OTP</button>
+            </div>
+            
+            <div id="otpStep" style="display:none;">
+                <p style="margin-bottom: 15px; font-weight: bold; color: green;">OTP sent to your mobile!</p>
+                <input type="text" id="loginOtp" placeholder="Enter 4-digit OTP" maxlength="4" class="modal-input">
+                <button class="btn-primary btn-full" onclick="verifyOtp()" style="margin-top: 15px;">Verify & Login</button>
+                <a href="#" onclick="cancelOtp(event)" style="display: block; text-align: center; margin-top: 15px; color: var(--text-secondary); text-decoration: underline;">Change Mobile Number</a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

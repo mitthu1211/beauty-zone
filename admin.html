@@ -87,16 +87,11 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Simple Admin Login Logic
+            // Check Admin Session
             if (!sessionStorage.getItem('adminLoggedIn')) {
-                const password = prompt("Admin Area: Enter Password (hint: admin123)");
-                if (password === 'admin123') {
-                    sessionStorage.setItem('adminLoggedIn', 'true');
-                } else {
-                    alert("Incorrect Password. Access Denied.");
-                    document.body.innerHTML = '<div style="text-align:center; padding:100px;"><h2>Access Denied</h2><a href="index.html">Return to Website</a></div>';
-                    return;
-                }
+                alert("Access Denied. Please login with your Owner mobile number on the homepage.");
+                window.location.href = 'index.html';
+                return;
             }
             renderTable();
 

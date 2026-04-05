@@ -109,3 +109,89 @@ function checkBookingStatus() {
         resultDiv.innerHTML = '<span style="color:red;">No booking found with this mobile number.</span>';
     }
 }
+
+
+// Auth & Login Logic
+let generatedOTP = null;
+
+function openLoginModal(e) {
+    if(e) e.preventDefault();
+    document.getElementById('loginModal').style.display = 'flex';
+}
+
+function closeLoginModal() {
+    document.getElementById('loginModal').style.display = 'none';
+    cancelOtp(); // reset form
+}
+
+function sendOtp() {
+    const mobile = document.getElementById('loginMobile').value;
+    if(!mobile || mobile.length < 10) {
+        alert("Please enter a valid mobile number.");
+        return;
+    }
+    
+    // Generate mock OTP
+    generatedOTP = Math.floor(1000 + Math.random() * 9000).toString();
+    alert(`[MOCK SMS]\nYour Beauty zone OTP is: ${generatedOTP}`);
+    
+    document.getElementById('mobileStep').style.display = 'none';
+    document.getElementById('otpStep').style.display = 'block';
+}
+
+function cancelOtp(e) {
+    if(e) e.preventDefault();
+    generatedOTP = null;
+    document.getElementById('loginOtp').value = '';
+    document.getElementById('mobileStep').style.display = 'block';
+    document.getElementById('otpStep').style.display = 'none';
+}
+
+function verifyOtp() {
+    const enteredOtp = document.getElementById('loginOtp').value;
+    const mobile = document.getElementById('loginMobile').value;
+    
+    if(enteredOtp === generatedOTP) {
+        alert("Login Successful!");
+        
+        // Admin vs User Check
+        if(mobile === '8356018941') {
+            sessionStorage.setItem('adminLoggedIn', 'true');
+            window.location.href = 'admin.html';
+        } else {
+            sessionStorage.setItem('userLoggedIn', mobile);
+            updateNavForUser(mobile);
+            closeLoginModal();
+        }
+    } else {
+        alert("Invalid OTP! Please try again.");
+    }
+}
+
+function updateNavForUser(mobile) {
+    const navLoginItem = document.getElementById('navLoginItem');
+    if(navLoginItem) {
+        navLoginItem.innerHTML = `<a href="#" onclick="logoutUser(event)">Logout</a>`;
+    }
+    
+    // Auto fill forms
+    const mobileInput = document.getElementById('mobile');
+    if(mobileInput) { mobileInput.value = mobile; mobileInput.readOnly = true; }
+    
+    const checkInput = document.getElementById('checkMobile');
+    if(checkInput) { checkInput.value = mobile; checkInput.readOnly = true; checkBookingStatus(); }
+}
+
+function logoutUser(e) {
+    if(e) e.preventDefault();
+    sessionStorage.removeItem('userLoggedIn');
+    window.location.reload();
+}
+
+// Persist user login state on page refresh
+document.addEventListener('DOMContentLoaded', () => {
+    const userRole = sessionStorage.getItem('userLoggedIn');
+    if(userRole) {
+        updateNavForUser(userRole);
+    }
+});
