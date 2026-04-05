@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty zone | Luxury Beauty Parlor</title>
+    <meta name="description" content="Beauty zone is a premium beauty parlor offering world-class hair, makeup, and spa services in a luxurious, relaxing atmosphere.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">Beauty zone</div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+            </ul>
+        </nav>
+        <a href="#booking" class="btn-primary">Book Now</a>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in">Discover Your <br> Inner Radiance</h1>
+            <p class="fade-in delay-1">Step into a world of elegance and allow our experts to elevate your beauty with premium treatments tailored just for you.</p>
+            <a href="#booking" class="btn-primary fade-in delay-2">Make an Appointment</a>
+        </div>
+        <div class="hero-image fade-in delay-3">
+            <img src="assets/hero_parlor.png" alt="Luxurious Beauty Parlor Interior">
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+            <p>Experience luxury with our tailored beauty treatments</p>
+        </div>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="card-image">
+                    <img src="assets/service_hair.png" alt="Hair Styling">
+                </div>
+                <div class="card-content">
+                    <h3>Hair Styling & Care</h3>
+                    <p>Precision cuts, vibrant coloring, and deep conditioning treatments to ensure your hair looks flawless.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-image">
+                    <img src="assets/service_makeup.png" alt="Professional Makeup">
+                </div>
+                <div class="card-content">
+                    <h3>Bridal & Event Makeup</h3>
+                    <p>Flawless, long-lasting makeup application for weddings, galas, and special occasions.</p>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-image">
+                    <img src="assets/service_facial.png" alt="Spa & Facials">
+                </div>
+                <div class="card-content">
+                    <h3>Spa & Facials</h3>
+                    <p>Rejuvenating skin treatments using advanced techniques and premium, organic skincare products.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="section-title">
+            <h2>Our Work</h2>
+            <p>A glimpse into our world of beauty</p>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="assets/service_hair.png" alt="Hair work 1"></div>
+            <div class="gallery-item"><img src="assets/service_makeup.png" alt="Makeup work 1"></div>
+            <div class="gallery-item"><img src="assets/service_facial.png" alt="Facial work 1"></div>
+            <div class="gallery-item"><img src="assets/hero_parlor.png" alt="Parlor atmosphere"></div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="booking-container">
+            <div class="booking-info">
+                <h2>Book Your <br> Appointment</h2>
+                <p>Ready for a transformation? Schedule your visit today and let us pamper you.</p>
+                
+                <div class="info-block">
+                    <h4>Location</h4>
+                    <p>123 Elegance Avenue, Suite 100, New York</p>
+                </div>
+                
+                <div class="info-block">
+                    <h4>Opening Hours</h4>
+                    <p>Mon-Fri: 9:00 AM - 8:00 PM</p>
+                    <p>Sat-Sun: 10:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            
+            <form class="booking-form" onsubmit="event.preventDefault(); alert('Booking requested!');">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Jane Doe">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="jane@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                        <option value="hair">Hair Styling</option>
+                        <option value="makeup">Makeup Artistry</option>
+                        <option value="facial">Spa & Facial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <button type="submit" class="btn-primary btn-full">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">Beauty zone</div>
+            <p>&copy; 2026 Beauty zone. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
