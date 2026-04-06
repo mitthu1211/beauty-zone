@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const serviceSelect = document.getElementById('service');
             const serviceText = serviceSelect.options[serviceSelect.selectedIndex].text;
             const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
             
             const newBooking = {
                 id: Date.now(),
@@ -89,6 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobile: mobile,
                 service: serviceText,
                 date: date,
+                time: time,
                 status: 'Pending'
             };
             
@@ -123,7 +125,8 @@ function checkBookingStatus() {
         // Show status of the most recent booking
         const latestBooking = userBookings[userBookings.length - 1];
         const statusColor = latestBooking.status === 'Confirmed' ? 'green' : '#d4af37';
-        resultDiv.innerHTML = `Your booking for <b>${latestBooking.service}</b> on <b>${latestBooking.date}</b> is <span style="color:${statusColor};">${latestBooking.status}</span>.`;
+        const timeDisplay = latestBooking.time ? ` at <b>${latestBooking.time}</b>` : '';
+        resultDiv.innerHTML = `Your booking for <b>${latestBooking.service}</b> on <b>${latestBooking.date}</b>${timeDisplay} is <span style="color:${statusColor};">${latestBooking.status}</span>.`;
     } else {
         resultDiv.innerHTML = '<span style="color:red;">No booking found with this mobile number.</span>';
     }
