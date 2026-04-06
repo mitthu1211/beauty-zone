@@ -122,9 +122,19 @@ section {
 }
 
 .navbar .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
     font-size: 2rem;
     color: var(--accent-color);
     letter-spacing: 1px;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 50%; /* Optional: make it circular if it's a square image */
 }
 
 .nav-links {
@@ -493,8 +503,13 @@ footer {
 }
 
 footer .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
     color: var(--accent-color);
     margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 /* Hamburger Menu */
