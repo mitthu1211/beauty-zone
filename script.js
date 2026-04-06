@@ -1,5 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
     
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.querySelector('.nav-links');
+
+    if (hamburger && navMenu) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
     // Header shadow on scroll
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
